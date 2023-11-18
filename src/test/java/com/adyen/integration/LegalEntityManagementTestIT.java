@@ -1,5 +1,6 @@
-package com.adyen;
+package com.adyen.integration;
 
+import com.adyen.Client;
 import com.adyen.enums.Environment;
 import com.adyen.model.legalentitymanagement.*;
 import com.adyen.service.legalentitymanagement.HostedOnboardingApi;
