@@ -66,7 +66,7 @@ You can use Maven and add this dependency to your project's POM:
 <dependency>
   <groupId>com.adyen</groupId>
   <artifactId>adyen-java-api-library</artifactId>
-  <version>22.0.0</version>
+  <version>22.1.0</version>
 </dependency>
 ```
 
@@ -233,6 +233,7 @@ System.setProperty("https.proxyPassword", "ward");
 ~~~~
 
 ### Client certificate authentication
+
 ~~~~ java
 // Import the required classes
 import com.adyen.Client;
@@ -256,6 +257,25 @@ sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrust
 Client client = new Client(sslContext, apiKey);
 // Use the client
 ~~~~
+
+### Classic Platforms Error Handling
+
+When requests fail, the library throws exceptions. For Classic AFP endpoints like [Create Account Holder](https://docs.adyen.com/api-explorer/Account/6/post/createAccountHolder), you can decode further details from the exception:  
+
+```java
+Client client = new Client("Your YOUR_API_KEY", Environment.TEST);
+ClassicPlatformAccountApi api = new ClassicPlatformAccountApi(client);
+CreateAccountHolderRequest request = new CreateAccountHolderRequest();
+
+try {
+    api.createAccountHolder(request);
+} catch (ApiException e) {
+    CreateAccountHolderResponse error = CreateAccountHolderResponse.fromJson(e.getResponseBody());
+    // inspect the error
+    System.out.println(e.getStatusCode());
+    System.out.println(error.getInvalidFields());
+}
+```
 
 ## Using the Cloud Terminal API Integration
 In order to submit In-Person requests with [Terminal API over Cloud](https://docs.adyen.com/point-of-sale/design-your-integration/choose-your-architecture/cloud/) you need to initialize the client in a similar way as the steps listed above for Ecommerce transactions, but make sure to include `TerminalCloudAPI`:
@@ -488,7 +508,7 @@ We value your input! Help us enhance our API Libraries and improve the integrati
 We encourage you to contribute to this repository, so everyone can benefit from new features, bug fixes, and any other improvements.
  
  
-Have a look at our [contributing guidelines](https://github.com/Adyen/adyen-java-api-library/blob/develop/CONTRIBUTING.md) to find out how to raise a pull request.
+Have a look at our [contributing guidelines](CONTRIBUTING.md) to find out how to raise a pull request.
  
  
 ## Support
