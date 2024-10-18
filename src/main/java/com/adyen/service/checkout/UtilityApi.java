@@ -56,7 +56,7 @@ public class UtilityApi extends Service {
     }
 
     /**
-    * Get an Apple Pay session
+    * Get an Apple Pay session now
     *
     * @param applePaySessionRequest {@link ApplePaySessionRequest }  (required)
     * @return {@link ApplePaySessionResponse }
@@ -67,7 +67,7 @@ public class UtilityApi extends Service {
     }
 
     /**
-    * Get an Apple Pay session
+    * Get an Apple Pay session now
     *
     * @param applePaySessionRequest {@link ApplePaySessionRequest }  (required)
     * @param requestOptions {@link RequestOptions } Object to store additional data such as idempotency-keys (optional)
