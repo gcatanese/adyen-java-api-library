@@ -28,17 +28,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 
 /**
- * PayToDetails
+ * TwintDetails
  */
 @JsonPropertyOrder({
-  PayToDetails.JSON_PROPERTY_CHECKOUT_ATTEMPT_ID,
-  PayToDetails.JSON_PROPERTY_RECURRING_DETAIL_REFERENCE,
-  PayToDetails.JSON_PROPERTY_SHOPPER_ACCOUNT_IDENTIFIER,
-  PayToDetails.JSON_PROPERTY_STORED_PAYMENT_METHOD_ID,
-  PayToDetails.JSON_PROPERTY_TYPE
+  TwintDetails.JSON_PROPERTY_CHECKOUT_ATTEMPT_ID,
+  TwintDetails.JSON_PROPERTY_RECURRING_DETAIL_REFERENCE,
+  TwintDetails.JSON_PROPERTY_STORED_PAYMENT_METHOD_ID,
+  TwintDetails.JSON_PROPERTY_SUBTYPE,
+  TwintDetails.JSON_PROPERTY_TYPE
 })
 
-public class PayToDetails {
+public class TwintDetails {
   public static final String JSON_PROPERTY_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
   private String checkoutAttemptId;
 
@@ -46,17 +46,17 @@ public class PayToDetails {
   @Deprecated
   private String recurringDetailReference;
 
-  public static final String JSON_PROPERTY_SHOPPER_ACCOUNT_IDENTIFIER = "shopperAccountIdentifier";
-  private String shopperAccountIdentifier;
-
   public static final String JSON_PROPERTY_STORED_PAYMENT_METHOD_ID = "storedPaymentMethodId";
   private String storedPaymentMethodId;
 
+  public static final String JSON_PROPERTY_SUBTYPE = "subtype";
+  private String subtype;
+
   /**
-   * **payto**
+   * The payment method type.
    */
   public enum TypeEnum {
-    PAYTO("payto");
+    TWINT("twint");
 
     private String value;
 
@@ -88,10 +88,10 @@ public class PayToDetails {
   public static final String JSON_PROPERTY_TYPE = "type";
   private TypeEnum type;
 
-  public PayToDetails() { 
+  public TwintDetails() { 
   }
 
-  public PayToDetails checkoutAttemptId(String checkoutAttemptId) {
+  public TwintDetails checkoutAttemptId(String checkoutAttemptId) {
     this.checkoutAttemptId = checkoutAttemptId;
     return this;
   }
@@ -122,7 +122,7 @@ public class PayToDetails {
 
 
   @Deprecated
-  public PayToDetails recurringDetailReference(String recurringDetailReference) {
+  public TwintDetails recurringDetailReference(String recurringDetailReference) {
     this.recurringDetailReference = recurringDetailReference;
     return this;
   }
@@ -155,37 +155,7 @@ public class PayToDetails {
   }
 
 
-  public PayToDetails shopperAccountIdentifier(String shopperAccountIdentifier) {
-    this.shopperAccountIdentifier = shopperAccountIdentifier;
-    return this;
-  }
-
-   /**
-   * The shopper&#39;s banking details or payId reference, used to complete payment.
-   * @return shopperAccountIdentifier
-  **/
-  @ApiModelProperty(value = "The shopper's banking details or payId reference, used to complete payment.")
-  @JsonProperty(JSON_PROPERTY_SHOPPER_ACCOUNT_IDENTIFIER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getShopperAccountIdentifier() {
-    return shopperAccountIdentifier;
-  }
-
-
- /**
-  * The shopper&#39;s banking details or payId reference, used to complete payment.
-  *
-  * @param shopperAccountIdentifier
-  */ 
-  @JsonProperty(JSON_PROPERTY_SHOPPER_ACCOUNT_IDENTIFIER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShopperAccountIdentifier(String shopperAccountIdentifier) {
-    this.shopperAccountIdentifier = shopperAccountIdentifier;
-  }
-
-
-  public PayToDetails storedPaymentMethodId(String storedPaymentMethodId) {
+  public TwintDetails storedPaymentMethodId(String storedPaymentMethodId) {
     this.storedPaymentMethodId = storedPaymentMethodId;
     return this;
   }
@@ -215,16 +185,46 @@ public class PayToDetails {
   }
 
 
-  public PayToDetails type(TypeEnum type) {
+  public TwintDetails subtype(String subtype) {
+    this.subtype = subtype;
+    return this;
+  }
+
+   /**
+   * The type of flow to initiate.
+   * @return subtype
+  **/
+  @ApiModelProperty(value = "The type of flow to initiate.")
+  @JsonProperty(JSON_PROPERTY_SUBTYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getSubtype() {
+    return subtype;
+  }
+
+
+ /**
+  * The type of flow to initiate.
+  *
+  * @param subtype
+  */ 
+  @JsonProperty(JSON_PROPERTY_SUBTYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSubtype(String subtype) {
+    this.subtype = subtype;
+  }
+
+
+  public TwintDetails type(TypeEnum type) {
     this.type = type;
     return this;
   }
 
    /**
-   * **payto**
+   * The payment method type.
    * @return type
   **/
-  @ApiModelProperty(value = "**payto**")
+  @ApiModelProperty(value = "The payment method type.")
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -234,7 +234,7 @@ public class PayToDetails {
 
 
  /**
-  * **payto**
+  * The payment method type.
   *
   * @param type
   */ 
@@ -246,7 +246,7 @@ public class PayToDetails {
 
 
   /**
-   * Return true if this PayToDetails object is equal to o.
+   * Return true if this TwintDetails object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -256,27 +256,27 @@ public class PayToDetails {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PayToDetails payToDetails = (PayToDetails) o;
-    return Objects.equals(this.checkoutAttemptId, payToDetails.checkoutAttemptId) &&
-        Objects.equals(this.recurringDetailReference, payToDetails.recurringDetailReference) &&
-        Objects.equals(this.shopperAccountIdentifier, payToDetails.shopperAccountIdentifier) &&
-        Objects.equals(this.storedPaymentMethodId, payToDetails.storedPaymentMethodId) &&
-        Objects.equals(this.type, payToDetails.type);
+    TwintDetails twintDetails = (TwintDetails) o;
+    return Objects.equals(this.checkoutAttemptId, twintDetails.checkoutAttemptId) &&
+        Objects.equals(this.recurringDetailReference, twintDetails.recurringDetailReference) &&
+        Objects.equals(this.storedPaymentMethodId, twintDetails.storedPaymentMethodId) &&
+        Objects.equals(this.subtype, twintDetails.subtype) &&
+        Objects.equals(this.type, twintDetails.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(checkoutAttemptId, recurringDetailReference, shopperAccountIdentifier, storedPaymentMethodId, type);
+    return Objects.hash(checkoutAttemptId, recurringDetailReference, storedPaymentMethodId, subtype, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PayToDetails {\n");
+    sb.append("class TwintDetails {\n");
     sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
-    sb.append("    shopperAccountIdentifier: ").append(toIndentedString(shopperAccountIdentifier)).append("\n");
     sb.append("    storedPaymentMethodId: ").append(toIndentedString(storedPaymentMethodId)).append("\n");
+    sb.append("    subtype: ").append(toIndentedString(subtype)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -294,17 +294,17 @@ public class PayToDetails {
   }
 
 /**
-   * Create an instance of PayToDetails given an JSON string
+   * Create an instance of TwintDetails given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of PayToDetails
-   * @throws JsonProcessingException if the JSON string is invalid with respect to PayToDetails
+   * @return An instance of TwintDetails
+   * @throws JsonProcessingException if the JSON string is invalid with respect to TwintDetails
    */
-  public static PayToDetails fromJson(String jsonString) throws JsonProcessingException {
-    return JSON.getMapper().readValue(jsonString, PayToDetails.class);
+  public static TwintDetails fromJson(String jsonString) throws JsonProcessingException {
+    return JSON.getMapper().readValue(jsonString, TwintDetails.class);
   }
 /**
-  * Convert an instance of PayToDetails to an JSON string
+  * Convert an instance of TwintDetails to an JSON string
   *
   * @return JSON string
   */

@@ -62,8 +62,6 @@ public class StoredPaymentMethodDetails {
     
     MOMO_WALLET_APP("momo_wallet_app"),
     
-    TWINT("twint"),
-    
     PAYMAYA_WALLET("paymaya_wallet"),
     
     GRABPAY_SG("grabpay_SG"),

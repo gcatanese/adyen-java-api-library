@@ -28,17 +28,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 
 /**
- * PayToDetails
+ * PayByBankAISDirectDebitDetails
  */
 @JsonPropertyOrder({
-  PayToDetails.JSON_PROPERTY_CHECKOUT_ATTEMPT_ID,
-  PayToDetails.JSON_PROPERTY_RECURRING_DETAIL_REFERENCE,
-  PayToDetails.JSON_PROPERTY_SHOPPER_ACCOUNT_IDENTIFIER,
-  PayToDetails.JSON_PROPERTY_STORED_PAYMENT_METHOD_ID,
-  PayToDetails.JSON_PROPERTY_TYPE
+  PayByBankAISDirectDebitDetails.JSON_PROPERTY_CHECKOUT_ATTEMPT_ID,
+  PayByBankAISDirectDebitDetails.JSON_PROPERTY_RECURRING_DETAIL_REFERENCE,
+  PayByBankAISDirectDebitDetails.JSON_PROPERTY_STORED_PAYMENT_METHOD_ID,
+  PayByBankAISDirectDebitDetails.JSON_PROPERTY_TYPE
 })
 
-public class PayToDetails {
+public class PayByBankAISDirectDebitDetails {
   public static final String JSON_PROPERTY_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
   private String checkoutAttemptId;
 
@@ -46,17 +45,14 @@ public class PayToDetails {
   @Deprecated
   private String recurringDetailReference;
 
-  public static final String JSON_PROPERTY_SHOPPER_ACCOUNT_IDENTIFIER = "shopperAccountIdentifier";
-  private String shopperAccountIdentifier;
-
   public static final String JSON_PROPERTY_STORED_PAYMENT_METHOD_ID = "storedPaymentMethodId";
   private String storedPaymentMethodId;
 
   /**
-   * **payto**
+   * **paybybank_**
    */
   public enum TypeEnum {
-    PAYTO("payto");
+    PAYBYBANK_AIS_DD("paybybank_AIS_DD");
 
     private String value;
 
@@ -88,10 +84,10 @@ public class PayToDetails {
   public static final String JSON_PROPERTY_TYPE = "type";
   private TypeEnum type;
 
-  public PayToDetails() { 
+  public PayByBankAISDirectDebitDetails() { 
   }
 
-  public PayToDetails checkoutAttemptId(String checkoutAttemptId) {
+  public PayByBankAISDirectDebitDetails checkoutAttemptId(String checkoutAttemptId) {
     this.checkoutAttemptId = checkoutAttemptId;
     return this;
   }
@@ -122,7 +118,7 @@ public class PayToDetails {
 
 
   @Deprecated
-  public PayToDetails recurringDetailReference(String recurringDetailReference) {
+  public PayByBankAISDirectDebitDetails recurringDetailReference(String recurringDetailReference) {
     this.recurringDetailReference = recurringDetailReference;
     return this;
   }
@@ -155,37 +151,7 @@ public class PayToDetails {
   }
 
 
-  public PayToDetails shopperAccountIdentifier(String shopperAccountIdentifier) {
-    this.shopperAccountIdentifier = shopperAccountIdentifier;
-    return this;
-  }
-
-   /**
-   * The shopper&#39;s banking details or payId reference, used to complete payment.
-   * @return shopperAccountIdentifier
-  **/
-  @ApiModelProperty(value = "The shopper's banking details or payId reference, used to complete payment.")
-  @JsonProperty(JSON_PROPERTY_SHOPPER_ACCOUNT_IDENTIFIER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getShopperAccountIdentifier() {
-    return shopperAccountIdentifier;
-  }
-
-
- /**
-  * The shopper&#39;s banking details or payId reference, used to complete payment.
-  *
-  * @param shopperAccountIdentifier
-  */ 
-  @JsonProperty(JSON_PROPERTY_SHOPPER_ACCOUNT_IDENTIFIER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShopperAccountIdentifier(String shopperAccountIdentifier) {
-    this.shopperAccountIdentifier = shopperAccountIdentifier;
-  }
-
-
-  public PayToDetails storedPaymentMethodId(String storedPaymentMethodId) {
+  public PayByBankAISDirectDebitDetails storedPaymentMethodId(String storedPaymentMethodId) {
     this.storedPaymentMethodId = storedPaymentMethodId;
     return this;
   }
@@ -215,16 +181,16 @@ public class PayToDetails {
   }
 
 
-  public PayToDetails type(TypeEnum type) {
+  public PayByBankAISDirectDebitDetails type(TypeEnum type) {
     this.type = type;
     return this;
   }
 
    /**
-   * **payto**
+   * **paybybank_**
    * @return type
   **/
-  @ApiModelProperty(value = "**payto**")
+  @ApiModelProperty(required = true, value = "**paybybank_**")
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -234,7 +200,7 @@ public class PayToDetails {
 
 
  /**
-  * **payto**
+  * **paybybank_**
   *
   * @param type
   */ 
@@ -246,7 +212,7 @@ public class PayToDetails {
 
 
   /**
-   * Return true if this PayToDetails object is equal to o.
+   * Return true if this PayByBankAISDirectDebitDetails object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -256,26 +222,24 @@ public class PayToDetails {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PayToDetails payToDetails = (PayToDetails) o;
-    return Objects.equals(this.checkoutAttemptId, payToDetails.checkoutAttemptId) &&
-        Objects.equals(this.recurringDetailReference, payToDetails.recurringDetailReference) &&
-        Objects.equals(this.shopperAccountIdentifier, payToDetails.shopperAccountIdentifier) &&
-        Objects.equals(this.storedPaymentMethodId, payToDetails.storedPaymentMethodId) &&
-        Objects.equals(this.type, payToDetails.type);
+    PayByBankAISDirectDebitDetails payByBankAISDirectDebitDetails = (PayByBankAISDirectDebitDetails) o;
+    return Objects.equals(this.checkoutAttemptId, payByBankAISDirectDebitDetails.checkoutAttemptId) &&
+        Objects.equals(this.recurringDetailReference, payByBankAISDirectDebitDetails.recurringDetailReference) &&
+        Objects.equals(this.storedPaymentMethodId, payByBankAISDirectDebitDetails.storedPaymentMethodId) &&
+        Objects.equals(this.type, payByBankAISDirectDebitDetails.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(checkoutAttemptId, recurringDetailReference, shopperAccountIdentifier, storedPaymentMethodId, type);
+    return Objects.hash(checkoutAttemptId, recurringDetailReference, storedPaymentMethodId, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PayToDetails {\n");
+    sb.append("class PayByBankAISDirectDebitDetails {\n");
     sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
-    sb.append("    shopperAccountIdentifier: ").append(toIndentedString(shopperAccountIdentifier)).append("\n");
     sb.append("    storedPaymentMethodId: ").append(toIndentedString(storedPaymentMethodId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
@@ -294,17 +258,17 @@ public class PayToDetails {
   }
 
 /**
-   * Create an instance of PayToDetails given an JSON string
+   * Create an instance of PayByBankAISDirectDebitDetails given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of PayToDetails
-   * @throws JsonProcessingException if the JSON string is invalid with respect to PayToDetails
+   * @return An instance of PayByBankAISDirectDebitDetails
+   * @throws JsonProcessingException if the JSON string is invalid with respect to PayByBankAISDirectDebitDetails
    */
-  public static PayToDetails fromJson(String jsonString) throws JsonProcessingException {
-    return JSON.getMapper().readValue(jsonString, PayToDetails.class);
+  public static PayByBankAISDirectDebitDetails fromJson(String jsonString) throws JsonProcessingException {
+    return JSON.getMapper().readValue(jsonString, PayByBankAISDirectDebitDetails.class);
   }
 /**
-  * Convert an instance of PayToDetails to an JSON string
+  * Convert an instance of PayByBankAISDirectDebitDetails to an JSON string
   *
   * @return JSON string
   */
